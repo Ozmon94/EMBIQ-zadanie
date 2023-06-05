@@ -11,7 +11,8 @@ export default function Carousel() {
     StoreContext
   ) as StoreType;
 
-  return circuit ? (
+  if (!circuit) return <Box></Box>;
+  return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ border: "1px solid", borderColor: "primary.light" }}>
         <img
@@ -46,7 +47,5 @@ export default function Carousel() {
         </Button>
       </Box>
     </Box>
-  ) : (
-    <Box></Box>
   );
 }

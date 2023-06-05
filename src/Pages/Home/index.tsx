@@ -61,7 +61,7 @@ export default function Home() {
     } else {
       fetchCircuits();
     }
-  }, []);
+  }, [setCircuits, setSeasons]);
 
   return (
     <Container sx={{ p: 4 }}>

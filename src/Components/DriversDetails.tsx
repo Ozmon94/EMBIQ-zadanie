@@ -1,11 +1,11 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, CircularProgress, Typography } from "@mui/material";
 import { useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import { StoreType } from "../types/storeType";
 
 export default function DriversDetails() {
   const { driver, driverFetching } = useContext(StoreContext) as StoreType;
-  if (driverFetching) return <Typography>Loading...</Typography>;
+  if (driverFetching) return <CircularProgress />;
   if (!driver) return <Typography>Select driver</Typography>;
 
   return (

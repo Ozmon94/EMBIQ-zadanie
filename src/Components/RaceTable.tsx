@@ -1,4 +1,5 @@
 import {
+  CircularProgress,
   Table,
   TableBody,
   TableCell,
@@ -16,7 +17,7 @@ export default function RaceTable() {
     StoreContext
   ) as StoreType;
 
-  if (raceFetching) return <Typography>Loading...</Typography>;
+  if (raceFetching) return <CircularProgress />;
   if (!year) return <Typography>Select year to see race ranking</Typography>;
   if (race?.length === 0)
     return <Typography>No race on selected date</Typography>;
