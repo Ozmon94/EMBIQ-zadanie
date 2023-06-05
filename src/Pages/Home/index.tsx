@@ -8,7 +8,9 @@ import { StoreContext } from "../../store/StoreProvider";
 import { StoreType } from "../../types/storeType";
 
 export default function Home() {
-  const { setSeasons, setCircuits } = useContext(StoreContext) as StoreType;
+  const { setSeasons, driver, setCircuits } = useContext(
+    StoreContext
+  ) as StoreType;
 
   useEffect(() => {
     const fetchSeasons = async () => {
@@ -68,7 +70,7 @@ export default function Home() {
       <Carousel />
       <YearSelect />
       <Grid container sx={{ my: 2 }} spacing={1}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={driver ? 8 : 12}>
           <Box
             sx={{
               width: "100%",
@@ -83,24 +85,25 @@ export default function Home() {
             <RaceTable />
           </Box>
         </Grid>
-        <Grid item xs={12} md={4}>
-          {" "}
-          <Box
-            sx={{
-              width: "100%",
-              bgcolor: "lightgray",
-              border: "1px solid gray",
-              minHeight: "250px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              p: 2,
-            }}
-          >
-            <DriversDetails />
-          </Box>
-        </Grid>
+        {driver ? (
+          <Grid item xs={12} md={4}>
+            <Box
+              sx={{
+                width: "100%",
+                bgcolor: "lightgray",
+                border: "1px solid gray",
+                minHeight: "250px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                p: 2,
+              }}
+            >
+              <DriversDetails />
+            </Box>
+          </Grid>
+        ) : null}
       </Grid>
     </Container>
   );
